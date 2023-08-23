@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import {H1} from "./components/H1"
+import {useState} from 'react'
+
+
 
 function App() {
+    const [total, setTotal ] = useState(0);
+    const [firstNumber, setFirstNumber] = useState();
+    const [secondNumber, setSecondNumber] = useState();
+    
+
+    const clickCalculate = (symbol) => {
+      switch (symbol){
+        case "+":
+          return setTotal(firstNumber + secondNumber);
+        case "-":
+          return setTotal(firstNumber - secondNumber);
+        case "*":
+          return setTotal(firstNumber * secondNumber);
+        case "/":
+          return setTotal(firstNumber / secondNumber);
+              
+        default:
+        }
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Simple Calculator</h1>
+      <hr/>
+      <H1 label={total}/>
+      <hr/>
+
+      <input type="number" placeholder="Enter the first Number" step={0.1} onChange={(e) => setFirstNumber(Number(e.target.value))} value={firstNumber}/>
+      <input type="number" placeholder="Enter the second Number" step={0.1} onChange={(e) => setSecondNumber(Number(e.target.value))} value={secondNumber}/>
+      <hr/>
+
+      <input type="button" value="Add" onClick={() => clickCalculate("+")} />
+      <input type="button" value="Subtract" onClick={() => clickCalculate("-")}/>
+      <input type="button" value="Divide" onClick={() => clickCalculate("/")} />
+      <input type="button" value="Multiply" onClick={() => clickCalculate("/")} />
+
+
+    </>
   );
 }
 
