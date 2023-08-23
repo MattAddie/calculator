@@ -5,7 +5,7 @@ import {useState} from 'react'
 
 
 function App() {
-    const [total, setTotal ] = useState(0);
+    const [total, setTotal ] = useState();
     const [firstNumber, setFirstNumber] = useState();
     const [secondNumber, setSecondNumber] = useState();
     
@@ -36,10 +36,10 @@ function App() {
       <input type="number" placeholder="Enter the second Number" step={0.1} onChange={(e) => setSecondNumber(Number(e.target.value))} value={secondNumber}/>
       <hr/>
 
-      <input type="button" value="Add" onClick={() => clickCalculate("+")} />
-      <input type="button" value="Subtract" onClick={() => clickCalculate("-")}/>
-      <input type="button" value="Divide" onClick={() => clickCalculate("/")} />
-      <input type="button" value="Multiply" onClick={() => clickCalculate("/")} />
+      <input className='button' type="button" value="Add" onClick={() => clickCalculate("+")} />
+      <input className='button' type="button" value="Subtract" onClick={() => clickCalculate("-")}/>
+      <input className='button' type="button" value="Divide" onClick={() => clickCalculate("/")} />
+      <input className='button' type="button" value="Multiply" onClick={() => clickCalculate("*")} />
 
 
     </>
